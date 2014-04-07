@@ -1,1 +1,6 @@
-<span ng-repeat="character in characters" class="character">{{character.value}}</span>
+Start: <input ng-model="start.value" type="range" max="255" min="0" ng-change="updateCharacters()" />
+Range: <input ng-model="range.value" type="range" max="1024" min="1" ng-change="updateCharacters()" />
+End: {{end}}
+<div>
+	<div ng-repeat="character in characters" class="character">{{character.value}}</div>
+</div>

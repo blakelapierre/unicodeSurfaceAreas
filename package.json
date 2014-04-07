@@ -21,6 +21,7 @@
     ]
   },
   "browserify-shim": {
-    "angular": "global:angular"
+    "angular": "global:angular",
+    "lodash": "global:_"
   }
 }

@@ -1,0 +1,6 @@
+.character {
+	display: inline-block;
+	margin: 0.5em;
+	background-color: #eee;
+	cursor: pointer;
+}
