@@ -1,0 +1,26 @@
+{
+  "name": "unicodeSurfaceAreas",
+  "version": "0.0.1",
+  "description": "see name",
+  "author": "Blake La Pierre",
+  "devDependencies": {
+    "node-static": "latest",
+    "browserify": "~3.38.1",
+    "browserify-shim": "~3.4.1",
+    "grunt": "~0.4.4",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-browserify": "~2.0.3",
+    "load-grunt-tasks": "~0.4.0",
+    "partialify": "~3.1.1",
+    "grunt-nodestatic": "~0.1.2"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "partialify"
+    ]
+  },
+  "browserify-shim": {
+    "angular": "global:angular"
+  }
+}
