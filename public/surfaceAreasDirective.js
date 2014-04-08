@@ -13,7 +13,7 @@ module.exports = function() {
 
 			var canvas = document.createElement('canvas'),
 				ctx = canvas.getContext('2d');
-
+document.body.appendChild(canvas);
 			console.log('ctx', ctx);
 
 			$scope.updateCharacters = _.debounce(function() {
@@ -23,10 +23,11 @@ module.exports = function() {
 					end = start + range,
 					fontSize = $scope.fontSize.value;
 
+				var characters = [];
 				$scope.end = end;
-				$scope.characters = [];
 
 				ctx.font = fontSize + 'px sans-serif';
+
 
 				for (var c = start; c < end; c++) {
 					var character = String.fromCharCode(c),
@@ -34,25 +35,34 @@ module.exports = function() {
 						usedArea = 0;
 
 					if (metric.width > 0) {
+						canvas.width = metric.width;
+						canvas.height = fontSize;
 						ctx.clearRect(0, 0, canvas.width, canvas.height);
-						ctx.strokeText(character, 0, 0);
+						ctx.fillText(character, 0, fontSize);
 
 						var imageData = ctx.getImageData(0, 0, metric.width, fontSize),
 							data = imageData.data;
 
-						for (var i = 0; i < data.length; i += 3) {
-							if (data[i] + data[i + 1] + data[i + 2] > 0) usedArea++;
+						for (var i = 0; i < data.length; i += 4) {
+							if (data[i + 3] != 0) usedArea++;
 						}
+						console.log(character, usedArea, imageData);
 					}
 
 					var totalArea = metric.width * fontSize;
-					$scope.characters.push({
-						value: character,
+					characters.push({
+						value: c,
+						character: character,
 						totalArea: totalArea,
 						usedArea: usedArea,
-						usedRelativeArea: usedArea / totalArea
+						usedRelativeArea: usedArea / totalArea,
+						imageURL: metric.width > 0 ? canvas.toDataURL('image/png') : ''
 					});
 				}
+
+				characters = _.sortBy(characters, ['usedArea']);
+
+				$scope.characters = characters;
 
 				$scope.$apply();
 			}, 30);

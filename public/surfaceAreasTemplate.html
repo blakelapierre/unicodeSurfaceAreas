@@ -2,5 +2,10 @@ Start: <input ng-model="start.value" type="range" max="255" min="0" ng-change="u
 Range: <input ng-model="range.value" type="range" max="65536" min="1" ng-change="updateCharacters()" />
 End: {{end}}
 <div>
-	<div ng-repeat="character in characters" class="character"><div>{{character.value}}<div><div>{{character.usedArea}}</div>
+	<div ng-repeat="character in characters" class="character">
+		<div>0x{{character.value.toString(16)}}</div>
+		<div>{{character.character}}<div>
+		<div>{{character.usedArea}}</div>
+		<img src="{{character.imageURL}}" />
+	</div>
 </div>
