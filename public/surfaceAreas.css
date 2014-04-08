@@ -4,3 +4,11 @@
 	background-color: #eee;
 	cursor: pointer;
 }
+
+.slider {
+	width: 100%;
+}
+
+.slider input {
+	width: inherit;
+}

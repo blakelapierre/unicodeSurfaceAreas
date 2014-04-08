@@ -13,11 +13,8 @@ module.exports = function() {
 
 			var canvas = document.createElement('canvas'),
 				ctx = canvas.getContext('2d');
-document.body.appendChild(canvas);
-			console.log('ctx', ctx);
 
 			$scope.updateCharacters = _.debounce(function() {
-				console.log('updating');
 				var start = $scope.start.value,
 					range = $scope.range.value,
 					end = start + range,
@@ -46,7 +43,6 @@ document.body.appendChild(canvas);
 						for (var i = 0; i < data.length; i += 4) {
 							if (data[i + 3] != 0) usedArea++;
 						}
-						console.log(character, usedArea, imageData);
 					}
 
 					var totalArea = metric.width * fontSize;

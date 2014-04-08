@@ -1,5 +1,5 @@
-Start: <input ng-model="start.value" type="range" max="255" min="0" ng-change="updateCharacters()" />
-Range: <input ng-model="range.value" type="range" max="65536" min="1" ng-change="updateCharacters()" />
+<div class="slider">Start: <input ng-model="start.value" type="range" max="65535" min="0" ng-change="updateCharacters()" /><div>
+<div class="slider">Range: <input ng-model="range.value" type="range" max="2048" min="1" ng-change="updateCharacters()" /></div>
 End: {{end}}
 <div>
 	<div ng-repeat="character in characters" class="character">
